@@ -12,7 +12,7 @@ import { AddressesServices } from '../addresses.service';
 })
 export class AddressListComponent implements OnInit {
   addresses: AddressModel[] = [];
-  displayedColumns: string[] = ['id', 'regnum', 'city', 'address', 'floors', 'elevators', 'typeElevator', 'maxWeight', 'velocity', 'gfloor', 'basement' ];
+  displayedColumns: string[] = ['id', 'regnum', 'city', 'address', 'floors', 'elevators', 'typeElevator', 'maxWeight', 'velocity', 'gfloor', 'basement', 'options' ];
   isLoading = false;
   private addressesSub: Subscription;
   dataSource = new MatTableDataSource(this.addresses);
@@ -26,13 +26,22 @@ export class AddressListComponent implements OnInit {
       this.addresses = data.addresses;
       this.isLoading = false;
       this.dataSource = new MatTableDataSource(this.addresses);
-      console.log(this.addresses);
     });
   }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
+  }
+
+  onUpdate(addressId: string) {
+
+  }
+
+  onDelete(addressId: string) {
+    this.addressesService.deleteAddress(addressId).subscribe(() => {
+      this.addressesService.getAddresses();
+    });
   }
 
 }

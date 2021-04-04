@@ -39,10 +39,13 @@ export class AddressesServices {
         }
         this.http.post('http://localhost:3000/api/address/add', addressData)
             .subscribe(resData => {
-                console.log(resData);
                 this.router.navigate(['/']);
             });
 
+    }
+
+    deleteAddress(addressId: string) {
+        return this.http.delete('http://localhost:3000/api/address/' + addressId);
     }
 
 }

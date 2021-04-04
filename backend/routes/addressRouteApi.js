@@ -45,4 +45,11 @@ router.post('/add', (req, res) => {
     });
 });
 
+router.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    Address.deleteOne({ _id : id}).then(result => {
+        res.status(201).json({message: "Address deleted!"})
+    });
+});
+
 module.exports = router;

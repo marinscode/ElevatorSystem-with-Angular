@@ -12,3 +12,8 @@ mat-form-field {
   width: 100%;
   padding: 0px 10px;
 }
+
+.button-row {
+  display: table-cell;
+  margin-right: 8px;
+}
