@@ -16,7 +16,7 @@ export class AddressesServices {
         .subscribe(addresses => {
             this.addresses = addresses;
             this.addressesUpdated.next({addresses: [...this.addresses]});
-        })
+        });
     }
 
     getAddressUpdateListener() {
