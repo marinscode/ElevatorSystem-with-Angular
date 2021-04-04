@@ -1,1 +1,62 @@
-<p>elevator-list works!</p>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<table mat-table [dataSource]="elevators" class="mat-elevation-z8" *ngIf="!isLoading">
+    <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> # </th>
+        <td mat-cell *matCellDef="let element"> </td>
+    </ng-container>
+
+    <!-- Type Column -->
+    <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+    </ng-container>
+
+    <!-- Control Panel Column -->
+    <ng-container matColumnDef="controlPanel">
+        <th mat-header-cell *matHeaderCellDef> Control Panel </th>
+        <td mat-cell *matCellDef="let element"> {{element.controlPanel}} </td>
+    </ng-container>
+
+    <!-- Manufacturer Column -->
+    <ng-container matColumnDef="manufacturer">
+        <th mat-header-cell *matHeaderCellDef> Manufacturer </th>
+        <td mat-cell *matCellDef="let element"> {{element.manufacturer}} </td>
+    </ng-container>
+
+    <!-- Scheme Type Column -->
+    <ng-container matColumnDef="schemeType">
+        <th mat-header-cell *matHeaderCellDef> Scheme Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.schemeType.name}} </td>
+    </ng-container>
+
+    <!-- Doors Column -->
+    <ng-container matColumnDef="doors">
+        <th mat-header-cell *matHeaderCellDef> Doors </th>
+        <td mat-cell *matCellDef="let element"> {{element.doors}} </td>
+    </ng-container>
+
+    <!-- Max Weight Column -->
+    <ng-container matColumnDef="maxWeight">
+        <th mat-header-cell *matHeaderCellDef> Max Weight </th>
+        <td mat-cell *matCellDef="let element"> {{element.maxWeight}} </td>
+    </ng-container>
+
+    <!-- Person Capacity Column -->
+    <ng-container matColumnDef="personCapacity">
+        <th mat-header-cell *matHeaderCellDef> Person Capacity </th>
+        <td mat-cell *matCellDef="let element"> {{element.personCapacity}} </td>
+    </ng-container>
+
+    <!-- Velocity Column -->
+    <ng-container matColumnDef="velocity">
+        <th mat-header-cell *matHeaderCellDef> Velocity </th>
+        <td mat-cell *matCellDef="let element"> {{element.velocity}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

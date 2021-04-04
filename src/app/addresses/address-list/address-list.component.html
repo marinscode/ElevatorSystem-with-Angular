@@ -1,36 +1,39 @@
-<table mat-table [dataSource]="addresses" class="mat-elevation-z8">
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<table mat-table [dataSource]="addresses" class="mat-elevation-z8" *ngIf="!isLoading">
     <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
 
     <!-- Position Column -->
     <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> # </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        <td mat-cell *matCellDef="let element"> </td>
     </ng-container>
 
-    <!-- Name Column -->
+    <!-- Register Number Column -->
     <ng-container matColumnDef="regnum">
         <th mat-header-cell *matHeaderCellDef> Register Number </th>
         <td mat-cell *matCellDef="let element"> {{element.regnum}} </td>
     </ng-container>
 
-    <!-- Weight Column -->
+    <!-- City Column -->
     <ng-container matColumnDef="city">
         <th mat-header-cell *matHeaderCellDef> City </th>
         <td mat-cell *matCellDef="let element"> {{element.city}} </td>
     </ng-container>
 
-    <!-- Symbol Column -->
+    <!-- Address Column -->
     <ng-container matColumnDef="address">
         <th mat-header-cell *matHeaderCellDef> Address </th>
         <td mat-cell *matCellDef="let element"> {{element.address}} </td>
     </ng-container>
 
+    <!-- Floors Column -->
     <ng-container matColumnDef="floors">
         <th mat-header-cell *matHeaderCellDef> Floors </th>
         <td mat-cell *matCellDef="let element"> {{element.floors}} </td>
     </ng-container>
 
+    <!-- Elevators Column -->
     <ng-container matColumnDef="elevators">
         <th mat-header-cell *matHeaderCellDef> Elevators </th>
         <td mat-cell *matCellDef="let element"> {{element.numberElevators}} </td>

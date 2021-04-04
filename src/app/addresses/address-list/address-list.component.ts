@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import { Address } from '../address.model';
+import { AddressModel } from '../address.model';
+import { AddressesServices } from '../addresses.service';
 
 @Component({
   selector: 'app-address-list',
@@ -8,33 +10,20 @@ import { Address } from '../address.model';
   styleUrls: ['./address-list.component.css']
 })
 export class AddressListComponent implements OnInit {
-  addresses: Address[] = [{
-    id: '1',
-    regnum: '884m3',
-    city: 'Livingston',
-    address: '40 Craigswood',
-    floors: '6',
-    numberElevators: 1,
-    gfloor: false,
-    basement: false,
-    isActive: false
-  },
-  {
-    id: '2',
-    regnum: '344s',
-    city: 'Livingston',
-    address: '100 Craigswood',
-    floors: '5',
-    numberElevators: 3,
-    gfloor: false,
-    basement: false,
-    isActive: false
-  }];
+  addresses: AddressModel[] = [];
   displayedColumns: string[] = ['id', 'regnum', 'city', 'address', 'floors', 'elevators'];
+  isLoading = false;
+  private addressesSub: Subscription;
 
-  constructor() { }
+  constructor(public addressesService: AddressesServices) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.isLoading = true;
+    this.addressesService.getAddresses();
+    this.addressesSub = this.addressesService.getAddressUpdateListener().subscribe(data => {
+      this.addresses = data.addresses;
+      this.isLoading = false;
+    });
   }
 
 }

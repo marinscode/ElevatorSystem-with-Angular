@@ -1,1 +1,55 @@
-<p>elevator-create works!</p>
+<div class="container">
+    <form method="POST" action="add">
+      <div class="form-group">
+        <label>Type</label>
+        <select name="type">
+            <option value="empty"></option>
+            <option value="Electrical">Electrical</option>
+            <option value="Hydraulic">Hydraulic</option>
+            <option value="Electric Frequency Regulator">Electric Frequency Regulator</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Control Panel</label>
+        <select name="controlPanel">
+            <option value="empty"></option>  
+            <option value="Central Electrical Switch">Central Electrical Switch</option>
+            <option value="Relay Panel">Relay Panel</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Controller</label>
+        <input type="text" class="form-control" name="controller" placeholder="Controller">
+      </div>
+      <div class="form-group">
+        <label>Manufacturer</label>
+        <input type="text" class="form-control" name="manufacturer" placeholder="Manufacturer">
+      </div>
+      <div class="form-group">
+        <label>Scheme Type</label>
+        <input type="text" class="form-control" name="schemeTypeName" placeholder="Scheme Type">
+        <input type="text" class="form-control" name="schemeTypeDescription" placeholder="Description">
+      </div>
+      <div class="form-group">
+        <label>Type Doors</label>
+        <input type="number" class="form-control" name="typeDoors">
+      </div>
+      <div class="form-group">
+        <label>Doors</label>
+        <input type="number" class="form-control" name="doors">
+      </div>
+      <div class="form-group">
+        <label>Max Weight</label>
+        <input type="number" class="form-control" name="maxWeight" step="80">
+      </div>
+      <div class="form-group">
+        <label>Person Capacity</label>
+        <input type="number" class="form-control" name="personCapacity">
+      </div>
+      <div class="form-group">
+        <label>Velocity</label>
+        <input type="number" class="form-control" name="velocity">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
