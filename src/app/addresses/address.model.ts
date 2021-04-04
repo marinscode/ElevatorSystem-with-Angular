@@ -1,10 +1,12 @@
+import { ElevatorModel } from "../elevator/elevator.model";
+
 export interface AddressModel {
-    id: string,
     regnum: String,
     city: string,
     address: String,
-    floors: String,
+    floors: Number,
     numberElevators: Number,
+    typeElevator: ElevatorModel
     gfloor: Boolean,
     basement: Boolean,
     isActive: Boolean

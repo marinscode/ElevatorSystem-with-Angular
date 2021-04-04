@@ -1,53 +1,39 @@
-<div class="container">
-    <form>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div class="container" *ngIf="!isLoading">
+    <form [formGroup]="form" (submit)="onSaveAddress()">
         <mat-form-field>
             <mat-label>Register Number</mat-label>
-            <input matInput placeholder="Register Number">
+            <input matInput placeholder="Register Number" formControlName="registerNumber">
         </mat-form-field>
         <mat-form-field>
             <mat-label>City</mat-label>
-            <input matInput placeholder="City">
+            <input matInput placeholder="City" formControlName="city">
         </mat-form-field>
         <mat-form-field>
             <mat-label>Address</mat-label>
-            <input matInput placeholder="Address">
+            <input matInput placeholder="Address" formControlName="address">
         </mat-form-field>
         <mat-form-field>
             <mat-label>Floors</mat-label>
-            <input matInput placeholder="Floors">
+            <input matInput placeholder="Floors" formControlName="floors">
         </mat-form-field>
         <mat-form-field>
             <mat-label>How many elevators?</mat-label>
-            <input matInput placeholder="How many elevators?">
+            <input matInput placeholder="How many elevators?" formControlName="elevators">
         </mat-form-field>
         <mat-form-field>
             <mat-label>Type Elevator</mat-label>
-            <mat-select >
-                <mat-option *ngFor="let elevator of elevators" [value]="elevator.type">{{elevator.type}}</mat-option>
+            <mat-select formControlName="typeElevator">
+                <mat-option *ngFor="let elevator of elevators" [value]="elevator._id">{{elevator.type}}</mat-option>
             </mat-select>
         </mat-form-field>
+        <section>
+            <mat-checkbox formControlName="isGroundFloor">Is ground floor?</mat-checkbox>
+            <br>
+            <mat-checkbox formControlName="basement">Basement?</mat-checkbox>
+            <br>
+            <mat-checkbox formControlName="isActive">Is active?</mat-checkbox>
+        </section>
+        <button mat-raised-button color="primary" type="submit">Save Address</button>
     </form>
 </div>
-<!-- <div class="container">
-    <form method="POST" action="add">
-        <div class="form-group">
-            <label>Type Elevator</label>
-            <select name="typeElevator">
-
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Ground Floor</label>
-            <input type="checkbox" class="form-control" name="gfloor" id="gfloor" unchecked>
-        </div>
-        <div class="form-group">
-            <label>Basement</label>
-            <input type="checkbox" class="form-control" name="basement" id="basement">
-        </div>
-        <div class="form-group">
-            <label>Is Active?</label>
-            <input type="checkbox" class="form-control" name="isActive" id="isActive">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-    </form>
-</div> -->
